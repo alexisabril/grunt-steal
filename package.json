@@ -1,0 +1,11 @@
+{
+	"name": "grunt-steal",
+	"version": "0.1.0",
+	"description": "Grunt task for running steal build scripts",
+	"dependencies": {
+		"exec-sync": "0.1.4"
+	},
+	"engines": {
+		"node": "*"
+	}
+}
