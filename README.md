@@ -1,4 +1,4 @@
-# grunt-steal
+# grunt-steal(alpha, unpublished)
 
 A task to allow for ease of running multiple [StealJS](http://javascriptmvc.com/docs.html#!stealjs "StealJS") build scripts.
 
