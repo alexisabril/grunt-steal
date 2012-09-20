@@ -11,7 +11,7 @@ exports.build = {
 		expected = grunt.file.read('test/expected/production.js');
 
 		test.equal(expected, actual, 'generated build script w/ default options');
- 
+
 		test.done();
 	}
 }

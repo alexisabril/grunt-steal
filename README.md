@@ -1,5 +1,7 @@
 # grunt-steal(alpha, unpublished)
 
+[![Build Status](https://secure.travis-ci.org/alexisabril/grunt-steal.png)](http://travis-ci.org/alexisabril/grunt-steal)
+
 A task to allow for ease of running multiple [StealJS](http://javascriptmvc.com/docs.html#!stealjs "StealJS") build scripts.
 
 Currently, this assumes you have steal as a subdirectory/submodule placed in the root of your UI project and configured via `steal/js steal/make.js`.
