@@ -1,3 +1,3 @@
 [submodule "steal"]
 	path = steal
-	url = https://github.com/jupiterjs/steal.git
+	url = git://github.com/alexisabril/grunt-steal.git
