@@ -13,7 +13,22 @@ exports.build = {
 		test.equal(expected, actual, 'generated build script w/ default options');
 
 		test.done();
-	}/*,
+	},
+
+	stealRoot: function(test) {
+		'use strict';
+
+		test.expect(1);
+
+		var actual = grunt.file.read('tmp/concat.js'),
+		expected = grunt.file.read('test/expected/concat.js');
+
+		test.equal(expected, actual, 'path is reset to grunt relative root');
+
+		test.done();
+	}
+
+	/*
 	TODO: enable test when steal is merged
 	overrides: function(test) {
 		'use strict';
@@ -27,5 +42,5 @@ exports.build = {
 
 		test.done();
 	}
-	*/
+	//*/
 }

@@ -6,7 +6,8 @@ module.exports = function(grunt) {
     exec = require('exec-sync'),
     os = require('os'),
     build = steal.build && steal.build.length ? steal.build : [],
-    js = os.platform() === 'win32' ? 'js.bat ' : './js ';
+    js = os.platform() === 'win32' ? 'js.bat ' : './js ',
+    gruntDir = process.cwd();
 
     process.chdir(steal.js || '.');
 
@@ -30,5 +31,7 @@ module.exports = function(grunt) {
       var stdout = exec(cmd);
       grunt.log.write(stdout);
     }
+
+    process.chdir(gruntDir);
   });
 };

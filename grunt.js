@@ -28,10 +28,18 @@ module.exports = function(grunt) {
     clean: ['tmp'],
 
     steal: {
-      build: ['test/fixtures/build.js', {
-        src: 'test/fixtures/build.js',
-        to: 'foo'
+      js: 'lib',
+      build: ['../test/fixtures/build.js', {
+        src: '../test/fixtures/build.js',
+        to: '../foo'
       }]
+    },
+
+    concat: {
+      dist: {
+        src: ['test/fixtures/concat/a.js', 'test/fixtures/concat/b.js'],
+        dest: 'tmp/concat.js'
+      }
     },
 
     nodeunit: {
@@ -45,7 +53,7 @@ module.exports = function(grunt) {
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
   grunt.renameTask('test', 'nodeunit');
-  grunt.registerTask('test', 'clean steal nodeunit');
+  grunt.registerTask('test', 'clean steal concat nodeunit');
 
   // Default task.
   grunt.registerTask('default', 'lint test');
