@@ -1,11 +1,23 @@
 {
 	"name": "grunt-steal",
 	"version": "0.1.0",
+	"author": "Alexis Abril <alexis@bitovi.com>",
 	"description": "Grunt task for running steal build scripts",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/alexisabril/grunt-steal.git"
+	},
+	"keywords": {
+		"stealjs",
+		"steal",
+		"grunt"
+	},
 	"dependencies": {
+		"exec-sync": "0.1.4"
+	},
+	"devDependencies": {
 		"grunt": "0.3.15",
 		"grunt-contrib-clean": "0.2.0",
-		"exec-sync": "0.1.4",
 		"nodeunit": "0.7.4"
 	},
 	"engines": {
@@ -13,5 +25,6 @@
 	},
 	"scripts": {
 		"test": "grunt --verbose"
-	}
+	},
+	"license": "MIT"
 }

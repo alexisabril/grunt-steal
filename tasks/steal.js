@@ -6,15 +6,15 @@ module.exports = function(grunt) {
     exec = require('exec-sync'),
     os = require('os'),
     build = steal.build && steal.build.length ? steal.build : [],
-    cmd = os.platform() === 'win32' ? 'js.bat ' : './js ';
+    js = os.platform() === 'win32' ? 'js.bat ' : './js ';
 
     process.chdir(steal.js || '.');
 
     for(var i = 0; i < build.length; i++) {
       var opts = typeof build[i] === 'string' ? {
         src: build[i]
-      } : build[i];
-      cmd += opts.src + ' ';
+      } : build[i],
+      cmd = js + opts.src + ' ';
       delete opts.src;
 
       for(var name in opts) {
