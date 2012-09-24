@@ -6,21 +6,26 @@ module.exports = function(grunt) {
     exec = require('exec-sync'),
     os = require('os'),
     build = steal.build && steal.build.length ? steal.build : [],
-    js = os.platform() === 'win32' ? 'js.bat ' : './js ';
+    cmd = os.platform() === 'win32' ? 'js.bat ' : './js ';
 
     process.chdir(steal.js || '.');
 
     for(var i = 0; i < build.length; i++) {
       var opts = typeof build[i] === 'string' ? {
-        src: build[i], compress: true
-      } : build[i],
-      cmd = js + opts.src;
+        src: build[i]
+      } : build[i];
+      cmd += opts.src + ' ';
+      delete opts.src;
 
-      if(!opts.compress) {
-        cmd += ' -nocompress';
+      for(var name in opts) {
+        if(opts[name]) {
+          cmd += '-' + name + ' ';
+          cmd += typeof opts[name] !== 'boolean' ? opts[name] + ' ' : '';
+        }
       }
+      cmd = cmd.trim();
 
-      grunt.log.writeln('Running: ' + cmd);
+      grunt.log.writeln('\nRunning: ' + cmd);
 
       var stdout = exec(cmd);
       grunt.log.write(stdout);

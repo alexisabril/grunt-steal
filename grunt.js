@@ -28,7 +28,10 @@ module.exports = function(grunt) {
     clean: ['tmp'],
 
     steal: {
-      build: ['test/fixtures/build.js']
+      build: ['test/fixtures/build.js', {
+        src: 'test/fixtures/build.js',
+        to: 'foo'
+      }]
     },
 
     nodeunit: {

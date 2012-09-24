@@ -43,8 +43,10 @@ You can also provide override options for your prebuilt build scripts.
 		build: [{
 			src: 'path/to/build.js',
 			to: 'some/new/dir',
-			compress: false
+			compressor: 'uglify'
 		}]
 	}
+
+*Note: option overrides are in an alpha release of StealJS*
 
 These will override the options specified within the build script.
