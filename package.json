@@ -13,7 +13,7 @@
 		"grunt"
 	],
 	"dependencies": {
-		"exec-sync": "0.1.4"
+		"exec-sync": "0.1.5"
 	},
 	"devDependencies": {
 		"grunt": "0.3.15",
