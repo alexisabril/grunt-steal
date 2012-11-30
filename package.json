@@ -1,6 +1,6 @@
 {
 	"name": "grunt-steal",
-	"version": "0.1.3",
+	"version": "0.2.0",
 	"author": "Alexis Abril <alexis@bitovi.com>",
 	"description": "Grunt task for running steal build scripts",
 	"repository": {
@@ -10,10 +10,10 @@
 	"keywords": [
 		"stealjs",
 		"steal",
-		"grunt"
+		"gruntplugin"
 	],
 	"dependencies": {
-		"exec-sync": "0.1.5"
+		"promised-io": "0.3.0"
 	},
 	"devDependencies": {
 		"grunt": "0.3.15",

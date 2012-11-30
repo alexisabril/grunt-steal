@@ -1,4 +1,4 @@
-# grunt-steal(alpha)
+# grunt-steal
 
 [![Build Status](https://secure.travis-ci.org/alexisabril/grunt-steal.png)](http://travis-ci.org/alexisabril/grunt-steal)
 

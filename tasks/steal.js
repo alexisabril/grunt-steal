@@ -3,35 +3,76 @@ module.exports = function(grunt) {
     this.requiresConfig('steal');
 
     var steal = grunt.config('steal'),
-    exec = require('exec-sync'),
-    os = require('os'),
+    done = this.async(),
+    promise = require('promised-io/promise'),
+
     build = steal.build && steal.build.length ? steal.build : [],
-    js = os.platform() === 'win32' ? 'js.bat ' : './js ',
-    gruntDir = process.cwd();
+    js = require('os').platform() === 'win32' ? 'js.bat' : './js',
+
+    gruntDir = process.cwd(),
+    instances = [],
+
+    runSteal = function(args) {
+      var deferred = new promise.Deferred();
+      grunt.log.writeln('\nRunning: ' + js + ' ' + args.join(' '));
+
+      grunt.utils.spawn({
+        cmd: js,
+        args: args
+      }, function(e, result, code) {
+        if(code) {
+          deferred.reject(e);
+        }
+        else {
+          grunt.log.write(result);
+          deferred.resolve();
+        }
+      });
+
+      return deferred.promise;
+    };
 
     process.chdir(steal.js || '.');
 
-    for(var i = 0; i < build.length; i++) {
+    var execute = function(i) {
       var opts = typeof build[i] === 'string' ? {
         src: build[i]
       } : build[i],
-      cmd = js + opts.src + ' ';
+      args = [];
+
+      args.push(opts.src);
       delete opts.src;
 
       for(var name in opts) {
         if(opts[name]) {
-          cmd += '-' + name + ' ';
-          cmd += typeof opts[name] !== 'boolean' ? opts[name] + ' ' : '';
+          args.push('-' + name);
+
+          if(typeof opts[name] !== 'boolean') {
+            args.push(opts[name]);
+          }
         }
       }
-      cmd = cmd.trim();
 
-      grunt.log.writeln('\nRunning: ' + cmd);
+      var deferred = runSteal(args);
 
-      var stdout = exec(cmd);
-      grunt.log.write(stdout);
-    }
+      deferred.then(function() {
+        if(i < build.length - 1) {
+          execute(++i);
+        }
+        else {
+          process.chdir(gruntDir);
 
-    process.chdir(gruntDir);
+          grunt.log.ok();
+          done();
+        }
+      }, function(e) {
+        grunt.log.writeln('\n');
+        grunt.log.error(e.stdout);
+
+        done(false);
+      });
+    };
+
+    execute(0);
   });
 };
