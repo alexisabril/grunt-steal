@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       var deferred = new promise.Deferred();
       grunt.log.writeln('\nRunning: ' + js + ' ' + args.join(' '));
 
-      grunt.utils.spawn({
+      grunt.util.spawn({
         cmd: js,
         args: args
       }, function(e, result, code) {
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
           deferred.reject(e);
         }
         else {
-          grunt.log.write(result);
+          grunt.log.write(result.stdout);
           deferred.resolve();
         }
       });
