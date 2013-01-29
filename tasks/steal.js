@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
   grunt.registerTask('steal', 'Build your application with StealJS', function() {
+    grunt.util = grunt.util || grunt.utils;
     this.requiresConfig('steal');
 
     var steal = grunt.config('steal'),
@@ -66,7 +67,6 @@ module.exports = function(grunt) {
           done();
         }
       }, function(e) {
-        grunt.log.writeln('\n');
         grunt.log.error(e.stdout);
 
         done(false);
