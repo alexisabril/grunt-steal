@@ -2,6 +2,14 @@
 
 [![Build Status](https://secure.travis-ci.org/alexisabril/grunt-steal.png)](http://travis-ci.org/alexisabril/grunt-steal)
 
+# NOTICE
+
+**grunt-steal has been forked and will be maintained from https://github.com/bitovi/grunt-steal going forward. This version is the current version on NPM, however upon the next StealJS release, Bitovi's fork will take over(slated early 2014).**
+
+**I'm currently leaving this version for JMVC users 3.2 and prior, however migrating issues to the new project.**
+
+**- Alexis Abril, Dec 9, 2013**
+
 A task to allow for ease of running multiple [StealJS](http://javascriptmvc.com/docs.html#!stealjs "StealJS") build scripts.
 
 Currently, this assumes you have steal as a subdirectory/submodule placed in the root of your UI project and configured via `steal/js steal/make.js`.
